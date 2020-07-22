@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 
+// Components ORDER BY letter DESC
+import Footer from './containers/Footer'
 import Header from './containers/Header'
 import Home from './components/Home'
 import Login from './components/Login'
-import Singup from './components/Singup'
 import Profile from './components/Profile'
-import Footer from './containers/Footer'
+import Singup from './components/Singup'
+
+// CSS
+import './App.scss';
 class App extends Component {
   constructor(){
     super()

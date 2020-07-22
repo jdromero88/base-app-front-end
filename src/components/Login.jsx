@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Form } from 'react-bulma-components';
+
+const { Input, Field, Control, Label, Help } = Form;
 
 class Login extends Component {
   constructor() {
@@ -6,6 +9,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      test: ''
     }
   }
   handleOnChange = (event) => {
@@ -19,7 +23,8 @@ class Login extends Component {
     console.log('updated')
     let user = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      test: this.state.test
     }
 
     fetch('http://localhost:3000/login', {
@@ -43,7 +48,7 @@ class Login extends Component {
       <div>
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
-          <label>e-mail: </label>
+          <Label>e-mail: </Label>
           <input type='text' name='email' value={this.state.email} onChange={this.handleOnChange} />
           <label>Password: </label>
           <input type='password' name='password' value={this.state.password} onChange={this.handleOnChange}/>

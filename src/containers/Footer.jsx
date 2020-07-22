@@ -1,9 +1,9 @@
 import React from 'react'
-
+import FooterContent from '../components/FooterContent'
 const Footer = () => {
   return(
     <div>
-      <p>this is the footer</p>
+      <FooterContent />
     </div>
   )
 }
