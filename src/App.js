@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './containers/Header'
+import Home from './components/Home'
+import Login from './components/Login'
+import Singup from './components/Singup'
+import Profile from './components/Profile'
+import Footer from './containers/Footer'
+class App extends Component {
+  constructor(){
+    super()
+      this.state = {
+        CurrentUser: null,
+        CurrentAvatar: null,
+      }
+  }
+  setCurrentUser = (data) => {
+    this.setState({
+      CurrentUser: data.user,
+      CurrentAvatar: data.avatar
+    })
+  }
+  render(){
+    return (
+      <div>
+        <Header />
+          <Switch>
+            <Route exact path='/singup' component={ Singup } />
+            <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser} routerProps={props} />} />
+            <Route exact path='/profile' render={() => {
+              return this.state.CurrentUser ?
+                  <Profile currentUser={this.state.CurrentUser} currentAvatar={this.state.CurrentAvatar} />
+                : (
+                  <Login setCurrentUser={this.setCurrentUser} />
+                )
+              }} />
+            <Route exact path='/' component={ Home } />
+          </Switch>
+        <Footer />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);
