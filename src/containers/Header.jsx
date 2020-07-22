@@ -1,10 +1,11 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-const Header = () => {
+const Header = (props) => {
+  console.log('In header ', props);
   return (
-    <div>
-      <Navbar />
-    </div>
+    <>
+      <Navbar currentUser={props.currentUser} logout={props.logout}/>
+    </>
   )
 }
 

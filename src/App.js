@@ -7,7 +7,7 @@ import Header from './containers/Header'
 import Home from './components/Home'
 import Login from './components/Login'
 import Profile from './components/Profile'
-import Singup from './components/Singup'
+import SignUp from './components/SignUp'
 
 // CSS
 import './App.scss';
@@ -25,14 +25,20 @@ class App extends Component {
       CurrentAvatar: data.avatar
     })
   }
+  logout = () => {
+    this.setState({
+      CurrentUser: null,
+      CurrentAvatar: null
+    })
+  }
   render(){
     return (
       <div>
-        <Header />
+        <Header currentUser={this.state.CurrentUser} logout={this.logout}/>
           <Switch>
-            <Route exact path='/singup' component={ Singup } />
+            <Route exact path='/signup' component={ SignUp } />
             <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser} routerProps={props} />} />
-            <Route exact path='/profile' render={() => {
+            <Route exact path='/profile' render={(props) => {
               return this.state.CurrentUser ?
                   <Profile currentUser={this.state.CurrentUser} currentAvatar={this.state.CurrentAvatar} />
                 : (
