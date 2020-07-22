@@ -13,7 +13,8 @@ const FooterContent = () => {
       <Hero.Body />
       <Hero.Footer>
         <Footer>
-          <Button color='warning'><a href="#top"><i className="fas fa-chevron-circle-up"></i></a></Button>
+          <Button color='warning'
+            onClick={() => console.log('clicked')}><a href="#top"><i className="fas fa-chevron-circle-up"></i></a></Button>
           <Container>
             <Content style={{ textAlign: 'center' }}>
               <p>

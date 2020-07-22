@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 // Components ORDER BY letter DESC
 import Footer from './containers/Footer'
@@ -42,7 +42,7 @@ class App extends Component {
               return this.state.CurrentUser ?
                   <Profile currentUser={this.state.CurrentUser} currentAvatar={this.state.CurrentAvatar} />
                 : (
-                  <Login setCurrentUser={this.setCurrentUser} />
+                  <Redirect to='/login' />
                 )
               }} />
             <Route exact path='/' component={ Home } />
