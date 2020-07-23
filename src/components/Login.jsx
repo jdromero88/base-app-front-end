@@ -20,7 +20,6 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('updated')
     let user = {
       email: this.state.email,
       password: this.state.password,

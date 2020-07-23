@@ -25,6 +25,12 @@ class App extends Component {
       CurrentAvatar: data.avatar
     })
   }
+  updateCurrentUser = (data) => {
+    this.setState({
+      CurrentUser: data.user,
+      CurrentAvatar: data.avatar_url
+    })
+  }
   logout = () => {
     this.setState({
       CurrentUser: null,
@@ -36,7 +42,7 @@ class App extends Component {
       <div>
         <Header currentUser={this.state.CurrentUser} logout={this.logout}/>
           <Switch>
-            <Route exact path='/signup' component={ SignUp } />
+            <Route exact path='/signup' render={(props) => <SignUp updateCurrentUser={this.updateCurrentUser} />} />
             <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser} routerProps={props} />} />
             <Route exact path='/profile' render={(props) => {
               return this.state.CurrentUser ?
