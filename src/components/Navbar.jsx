@@ -5,16 +5,16 @@ const Navbar = (props) => {
   return(
     <nav>
       <ul>
-        <li><Link to='/'>Home</Link></li>
+        <Link to='/'>Home</Link>
         {props.currentUser ?(
             <>
-              <li><Link to='/profile'>My Profile</Link></li>
-              <li onClick={props.logout}><a href='#top' >Logout</a></li>
+              <Link to='/profile'>My Profile</Link>
+              <Link onClick={props.logout}>Logout</Link>
             </>
         ) : (
           <Fragment>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/signup'>Sign Up</Link></li>
+            <Link to='/login'>Login</Link>
+            <Link to='/signup'>Sign Up</Link>
           </Fragment>
         )}
       </ul>

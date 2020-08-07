@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import SignUp from './components/SignUp'
+import UpdateProfile from './components/UpdateProfile'
 
 // CSS
 import './App.scss';
@@ -30,6 +31,7 @@ class App extends Component {
       CurrentUser: data.user,
       CurrentAvatar: data.avatar_url
     })
+    this.history.push('/profile');
   }
   logout = () => {
     this.setState({
@@ -42,6 +44,7 @@ class App extends Component {
       <div>
         <Header currentUser={this.state.CurrentUser} logout={this.logout}/>
           <Switch>
+            <Route exact path='/updateprofile' render={(props) => <UpdateProfile currentUser={this.state.CurrentUser} currentAvatar={this.state.CurrentAvatar} />} />
             <Route exact path='/signup' render={(props) => <SignUp updateCurrentUser={this.updateCurrentUser} />} />
             <Route exact path='/login' render={(props) => <Login setCurrentUser={this.setCurrentUser} routerProps={props} />} />
             <Route exact path='/profile' render={(props) => {
