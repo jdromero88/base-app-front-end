@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { Form } from 'react-bulma-components';
-
-const { Input, Field, Control, Label, Help } = Form;
 
 class Login extends Component {
   constructor() {
@@ -47,7 +44,7 @@ class Login extends Component {
       <div>
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
-          <Label>e-mail: </Label>
+          <label>e-mail: </label>
           <input type='text' name='email' value={this.state.email} onChange={this.handleOnChange} />
           <label>Password: </label>
           <input type='password' name='password' value={this.state.password} onChange={this.handleOnChange}/>

@@ -11,7 +11,7 @@ import SignUp from './components/SignUp'
 import UpdateProfile from './components/UpdateProfile'
 
 // CSS
-import './App.scss';
+import './App.css';
 class App extends Component {
   constructor(){
     super()
